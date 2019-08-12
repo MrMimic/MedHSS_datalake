@@ -50,7 +50,7 @@ class Executor(object):
 
                         publication = Publication(pmid=pmid)
                         publication.get_data()
-                        publication.write_data(os.path.join('output', 'output_{}'.format(filename))
+                        publication.write_data(os.path.join('output', 'output_{}'.format(filename)))
 
                         # Count all meshs
                         for mesh in publication.mesh_all.split('; '):

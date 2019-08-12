@@ -21,7 +21,7 @@ class ReasearchGate(object):
 
         self.ua = UserAgent()
 
-        with open(os.path.join('output', 'scanned_urls.csv'), 'r') as handler:
+        with open(os.path.join(self.resources_dir, 'scanned_urls.csv'), 'r') as handler:
             self.scanned_urls = handler.read().splitlines()
 
     def crawl_listed_jobs_page(self, url):
