@@ -6,7 +6,7 @@ from fake_useragent import UserAgent
 from bs4 import BeautifulSoup as bs
 
 
-iclass ReasearchGate(object):
+class ReasearchGate(object):
 
     def __init__(self):
 

@@ -76,7 +76,6 @@ class Publication(object):
                 except AttributeError:
                     pass
 
-
         self.pubdate = '{}/{}/{}'.format(self.year, self.month, self.day)
 
         self.title = data.articletitle.text
@@ -103,7 +102,7 @@ class Publication(object):
                 self.mesh_all.append(mesh.descriptorname.text)
                 if mesh.descriptorname['majortopicyn'] == 'Y':
                     self.mesh_majors.append(mesh.descriptorname.text)
-            except Exception as E:
+            except Exception:
                 continue
         self.mesh_majors = '; '.join(self.mesh_majors)
         self.mesh_all = '; '.join(self.mesh_all)

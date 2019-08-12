@@ -10,3 +10,4 @@ class DownloadTests(unittest.TestCase):
 
     def test_reasearch_gate_instance(self):
         instance = ReasearchGate()
+        self.assertIsNotNone(instance)
