@@ -8,6 +8,10 @@ __pycache__/
 
 documents/
 venv/
+input/
+output/
+configurations/
+resources/
 
 # Distribution / packaging
 .Python
