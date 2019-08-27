@@ -72,7 +72,7 @@ class Email(object):
         id_list = mail_ids.split()
         latest_email_id = int(id_list[-1])
 
-        typ, data = mail.fetch(str(latest_email_id), '(RFC822)' )
+        typ, data = mail.fetch(str(latest_email_id), '(RFC822)')
 
         for response_part in data:
             if isinstance(response_part, tuple):
