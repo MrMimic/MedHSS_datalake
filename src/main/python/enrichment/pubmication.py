@@ -46,33 +46,33 @@ class Publication(object):
         self.journal = data.isoabbreviation.text
 
         try:
-            self.year = data.articledate.year.text
+            self.year = data.pubdate.year.text
         except AttributeError:
             try:
                 self.year = data.datecompleted.year.text
             except AttributeError:
                 try:
-                    self.year = data.pubdate.year.text
+                    self.year = data.articledate.year.text
                 except AttributeError:
                     pass
         try:
-            self.month = data.articledate.month.text
+            self.month = data.pubdate.month.text
         except AttributeError:
             try:
                 self.month = data.datecompleted.month.text
             except AttributeError:
                 try:
-                    self.month = data.pubdate.month.text
+                    self.month = data.articledate.month.text
                 except AttributeError:
                     pass
         try:
-            self.day = data.articledate.day.text
+            self.day = data.pubdate.day.text
         except AttributeError:
             try:
                 self.day = data.datecompleted.day.text
             except AttributeError:
                 try:
-                    self.day = data.pubdate.day.text
+                    self.day = data.articledate.day.text
                 except AttributeError:
                     pass
 
