@@ -18,59 +18,61 @@ class Executor(object):
         """
         mesh_counter = dict()
 
-        try:
-            for filename in os.listdir('input'):
+        # try:
+        for filename in os.listdir('input'):
 
-                if filename.endswith('csv'):
+            if filename.endswith('csv'):
 
-                    file_path = os.path.join('input', filename)
+                file_path = os.path.join('input', filename)
 
-                    print('\n{}\n'.format(filename))
+                print('\n{}\n'.format(filename))
 
-                    if 'output_{}'.format(filename) in os.listdir('output'):
-                        with open('output/output_{}'.format(filename)) as handler:
-                            scanned_pmids = [line.split('\t')[0] for line in handler.readlines()]
-                            print('{} pmids already scanned'.format(len(scanned_pmids)))
-                    else:
-                        scanned_pmids = list()
+                if 'output_{}'.format(filename) in os.listdir('output'):
+                    with open('output/output_{}'.format(filename)) as handler:
+                        scanned_pmids = [line.split('\t')[0] for line in handler.readlines()]
+                        print('{} pmids already scanned'.format(len(scanned_pmids)))
+                else:
+                    scanned_pmids = list()
 
-                    with open(file_path, 'r') as h:
-                        lines = [line for line in h.readlines()]
-                    del lines[0]
+                with open(file_path, 'r') as h:
+                    lines = [line.sptrip('\n') for line in h.readlines()]
+                # del lines[0]
 
-                    for line in tqdm(lines):
-                        url = re.findall('/pubmed/.*?"', line)[0]
-                        url = re.sub('/pubmed/', '', url)
-                        pmid = re.sub('"', '', url)
+                for line in tqdm(lines):
+                    # url = re.findall('/pubmed/.*?"', line)[0]
+                    # url = re.sub('/pubmed/', '', url)
+                    # pmid = re.sub('"', '', url)
+                    #
+                    # if str(pmid) in scanned_pmids:
+                    #     continue
+                    #
+                    # del url
+                    pmid=line
 
-                        if str(pmid) in scanned_pmids:
-                            continue
+                    publication = Publication(pmid=pmid)
+                    publication.get_data()
+                    publication.write_data(os.path.join('output', 'output_{}'.format(filename)))
 
-                        del url
+                    # Count all meshs
+                    for mesh in publication.mesh_all.split('; '):
+                        if mesh not in mesh_counter.keys():
+                            mesh_counter[mesh] = 1
+                        else:
+                            mesh_counter[mesh] += 1
 
-                        publication = Publication(pmid=pmid)
-                        publication.get_data()
-                        publication.write_data(os.path.join('output', 'output_{}'.format(filename)))
+                    time.sleep(1.5)
 
-                        # Count all meshs
-                        for mesh in publication.mesh_all.split('; '):
-                            if mesh not in mesh_counter.keys():
-                                mesh_counter[mesh] = 1
-                            else:
-                                mesh_counter[mesh] += 1
+        #
+        # with open('mesh_{}'.format(filename), 'a') as h:
+        #     for k, v in mesh_counter.items():
+        #         h.write('{}\t{}\n'.format(k, v))
 
-                        time.sleep(1.5)
+        return True, 'output/output_{}'.format(filename)
 
-
-            with open('mesh_{}'.format(filename), 'a') as h:
-                for k, v in mesh_counter.items():
-                    h.write('{}\t{}\n'.format(k, v))
-
-            return True, 'output/output_{}'.format(filename)
-
-        except Exception as E:
-            print(E)
-            return False, E
+        # except Exception as E:
+        #     print(E)
+        #     return True, E
+            # continue
 
     def compare_pdf_to_table(self):
         """"""
@@ -84,3 +86,7 @@ class Executor(object):
                 print('PRESENT: {}'.format(pdf.title))
             else:
                 print('{}\tABSENT\t{}'.format(pdf_name, pdf.title))
+
+if __name__ == '__main__':
+    A = Executor()
+    A.launch_pubmed_enrichment()

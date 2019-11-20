@@ -43,7 +43,10 @@ class Publication(object):
         except AttributeError:
             pass
 
-        self.journal = data.isoabbreviation.text
+        try:
+            self.journal = data.isoabbreviation.text
+        except AttributeError:
+            pass
 
         try:
             self.year = data.pubdate.year.text
@@ -116,16 +119,27 @@ class Publication(object):
     def write_data(self, filename):
 
         with open(filename, 'a') as h:
-            h.write('{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format(
+            h.write('https://www.ncbi.nlm.nih.gov/pubmed/{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format(
                 self.pmid,
-                self.title,
-                self.mesh_all,
                 self.mesh_majors,
-                self.year,
+                self.title,
                 self.abstract,
                 self.authors,
                 self.first_author,
                 self.publication_type,
-                self.month,
+                self.year,
+                self.pubdate,
                 self.journal,
-                self.pubdate))
+                ''))
+# self.pmid,
+# self.title,
+# self.mesh_all,
+# self.mesh_majors,
+# self.year,
+# self.abstract,
+# self.authors,
+# self.first_author,
+# self.publication_type,
+# self.month,
+# self.journal,
+# self.pubdate))
