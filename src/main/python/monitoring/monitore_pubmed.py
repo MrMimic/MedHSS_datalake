@@ -4,17 +4,17 @@ from bs4 import BeautifulSoup as BS
 import requests
 import datetime as dt
 import tqdm
-import pandas as pd
+# import pandas as pd
 
 
 class Monitoring(object):
 
     def __init__(self):
         self.already_scanned_file = os.path.join('resources', 'already_scanned.csv')
-        try:
-            self.already_scanned = pd.read_csv(self.already_scanned_file, header=None).iloc[:, 0].tolist()
-        except pd.errors.EmptyDataError:
-            self.already_scanned = []
+        # try:
+        #     self.already_scanned = pd.read_csv(self.already_scanned_file, header=None).iloc[:, 0].tolist()
+        # except pd.errors.EmptyDataError:
+        #     self.already_scanned = []
 
     def launch_search(self, request, index):
         """
@@ -38,10 +38,10 @@ class Monitoring(object):
                 publication.get_data()
                 publication.write_data(os.path.join('output', file_name))
                 self.already_scanned.append(pmid)
-        print()
 
         self.already_scanned = list(set(self.already_scanned))
-        pd.DataFrame(self.already_scanned).to_csv(self.already_scanned_file, index=False, header=None)
+        # pd.DataFrame(self.already_scanned).to_csv(self.already_scanned_file, index=False, header=None)
+        return os.path.join('output', file_name)
 
 if __name__ == '__main__':
     pubmed_requests = [

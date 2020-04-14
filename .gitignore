@@ -12,6 +12,8 @@ input/
 output/
 configurations/
 resources/
+venv
+.vscode
 
 # Distribution / packaging
 .Python
