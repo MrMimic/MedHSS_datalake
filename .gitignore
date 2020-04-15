@@ -1,3 +1,9 @@
+# Perso
+*.cfg
+venv
+.vscode
+output/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -5,15 +11,6 @@ __pycache__/
 
 # C extensions
 *.so
-
-documents/
-venv/
-input/
-output/
-configurations/
-resources/
-venv
-.vscode
 
 # Distribution / packaging
 .Python

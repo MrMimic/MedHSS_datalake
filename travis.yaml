@@ -1,0 +1,16 @@
+language: python
+
+# Can provide different OS to try on it
+# Also different version from a given package
+
+python:
+  - "3.7"
+
+# command to install dependencies
+install:
+  - pip install poetry
+  - poetry install
+
+# command to run tests
+script:
+  - pytest src/unittest/python/

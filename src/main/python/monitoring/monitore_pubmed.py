@@ -10,11 +10,13 @@ import tqdm
 class Monitoring(object):
 
     def __init__(self):
-        self.already_scanned_file = os.path.join('resources', 'already_scanned.csv')
+        # self.already_scanned_file = os.path.join('resources', 'already_scanned.csv')
         # try:
         #     self.already_scanned = pd.read_csv(self.already_scanned_file, header=None).iloc[:, 0].tolist()
         # except pd.errors.EmptyDataError:
         #     self.already_scanned = []
+        # Should be stored in an SQLite DB
+        self.database_path = None
 
     def launch_search(self, request, index):
         """

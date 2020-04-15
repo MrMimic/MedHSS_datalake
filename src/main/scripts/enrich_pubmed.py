@@ -1,9 +1,15 @@
+import configparser
+import os
+
 from emails.gmail import Email
 from monitoring.monitore_pubmed import Monitoring
 
+configuration = configparser.ConfigParser()
+configuration.read(os.path.join("src", "main", "resources", "configuration.cfg"))
+
 mailer = Email(
-    email="@gmail.com",
-    password="",
+    email=configuration["account"]["mail"],
+    password=configuration["account"]["pass"],
     server='smtp.gmail.com',
     port=587)
 
@@ -20,5 +26,5 @@ for index, request in enumerate(pubmed_requests):
     mailer.send_mail(
         corresponding=email_from,
         file_name=file_path,
-        subject=f"#{index}",
-        text="#")
+        subject=f"Auto analysis #{index}",
+        text="<3")
