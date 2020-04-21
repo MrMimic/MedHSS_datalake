@@ -1,9 +1,8 @@
 
-from monitoring.monitore_pubmed import Monitoring
 import unittest
+from emails.gmail import Gmail
 
-
-class MonitorePubmedTest(unittest.TestCase):
+class MailerTest(unittest.TestCase):
 
     def setUp(self) -> None:
         pass
@@ -11,4 +10,4 @@ class MonitorePubmedTest(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-        
+    

@@ -1,5 +1,6 @@
 
 import unittest
+from publication.publication import Publication
 
 
 class MailerTest(unittest.TestCase):

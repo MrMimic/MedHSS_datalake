@@ -3,6 +3,7 @@
 venv
 .vscode
 output/
+target/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

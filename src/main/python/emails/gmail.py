@@ -61,7 +61,7 @@ class Gmail(object):
         server.quit()
         print('Analysis sent back to {}'.format(corresponding))
 
-    def read_last_mail(self) -> List[str, str]:
+    def read_last_mail(self) -> List[str]:
         """
         Read the last mail of the associated email.
         Store locally the joined file.
