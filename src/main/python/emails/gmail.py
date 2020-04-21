@@ -9,7 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-class Email(object):
+class Gmail(object):
 
     def __init__(self, email, password, server, port):
 

@@ -1,13 +1,13 @@
 import datetime as dt
 import os
+import sqlite3
 
 import requests
 from bs4 import BeautifulSoup as BS
 
 import tqdm
-from enrichment.pubmication import Publication
+from publication.publication import Publication
 
-# import pandas as pd
 
 
 class Monitoring(object):
@@ -55,5 +55,5 @@ if __name__ == '__main__':
     ]
     # Okay, now DL
     monitor = Monitoring()
-    for index, request in enumerate(pubmed_requests):
-        data = monitor.launch_search(request=request, index=index + 1)
+    # for index, request in enumerate(pubmed_requests):
+    #     data = monitor.launch_search(request=request, index=index + 1)

@@ -131,15 +131,4 @@ class Publication(object):
                 self.pubdate,
                 self.journal,
                 ''))
-# self.pmid,
-# self.title,
-# self.mesh_all,
-# self.mesh_majors,
-# self.year,
-# self.abstract,
-# self.authors,
-# self.first_author,
-# self.publication_type,
-# self.month,
-# self.journal,
-# self.pubdate))
+

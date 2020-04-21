@@ -1,8 +1,10 @@
-import configparser
+#!/usr/bin/env python3
 import os
+import configparser
 
-from emails.gmail import Email
 from monitoring.monitore_pubmed import Monitoring
+from publication.publication import Publication
+from emails.gmail import Gmail
 
 configuration = configparser.ConfigParser()
 configuration.read(os.path.join("src", "main", "resources", "configuration.cfg"))
