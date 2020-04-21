@@ -105,3 +105,8 @@ class Gmail(object):
                 print('Downloaded "{file}" from email titled "{subject}" with UID {uid}.'.format(file=file_name, subject=email_subject, uid=latest_email_id))
 
         return email_from, email_subject, file_path
+
+    def read_pubmed_requests(self, file_path):
+        with open(file_path, "r") as handler:
+            pubmed_requests = handler.readlines()
+        return pubmed_requests
