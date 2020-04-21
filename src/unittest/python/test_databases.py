@@ -12,7 +12,7 @@ class DatabasesTest(unittest.TestCase):
         current_folder = os.path.dirname(os.path.abspath(__file__))
         # And test target
         self.target = os.path.join(current_folder, "../", "../", "../", "target")
-        #Specific output for this test
+        # Specific output for this test
         self.output = os.path.join(self.target, "database")
         # Create if needed
         if not os.path.isdir(self.output):

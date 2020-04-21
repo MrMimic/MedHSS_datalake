@@ -96,8 +96,8 @@ class Publication():
         # Get pubtype
         pub_types = data.find_all('publicationtype')
         self.publication_type = ', '.join([
-            '{}'.format(pub_type.text) for pub_type in pub_types
-            if '{}'.format(pub_type.text) in self.pth
+            pub_type.text for pub_type in pub_types
+            if pub_type.text in self.pth
         ])
         del pub_types
         # Get associated MeSH terms
