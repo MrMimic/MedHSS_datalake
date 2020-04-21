@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="MedHSS_datalake",
+    name="mdatalake",
     version="0.0.1",
     author="MrMimic",
     author_email="",
@@ -12,7 +12,8 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="",
-    packages=setuptools.find_packages(exclude=['src/unittest/python']),
+    packages=setuptools.find_packages(where="src/main/python/"),
+    package_dir={"": "src/main/python/"},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

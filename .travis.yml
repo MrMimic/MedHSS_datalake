@@ -6,6 +6,10 @@ language: python
 python:
   - "3.7"
 
+# Ugly but setupt.py dont want to install the lib
+before_install:
+  - export PYTHONPATH=$PYTHONPATH:$(pwd)/src/main/python
+
 # command to install dependencies
 install:
   - pip install -U pip
