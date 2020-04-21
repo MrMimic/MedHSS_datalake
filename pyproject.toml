@@ -12,9 +12,12 @@ configparser = "^5.0.0"
 requests = "^2.23.0"
 bs4 = "^0.0.1"
 tqdm = "^4.45.0"
+lxml = "^4.5.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+pylint = "^2.4.4"
+mypy = "^0.770"
 
 
 [build-system]
