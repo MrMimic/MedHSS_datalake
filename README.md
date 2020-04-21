@@ -14,20 +14,14 @@ Source the virtual environement
 
 `source venv/bin/activate`
 
-Install pybuilder
+Install poetry
 
-`pip install pybuilder`
+`pip install poetry`
 
-Build the project
+Install dependencies
 
-`pyb install_dependencies`
+`poetry install`
 
 Run the unitary tests
 
-`pyb test`
-
-
-- LEEM job chopables ?
-- API LinkedIn, prix, usage ?
-- Recuperer autre section sur RG
-- Expliquer ponderation skills LinkedIn
+`pytest`
