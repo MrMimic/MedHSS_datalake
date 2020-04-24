@@ -17,12 +17,8 @@ mailer = Gmail(email=configuration["account"]["mail"],
                port=configuration["account"]["port"])
 
 # Read last mail and associated requests
-# email_from, input_file_path = mailer.read_last_mail()
-# pubmed_requests = mailer.read_pubmed_requests(file_path=input_file_path)
-pubmed_requests = [
-    '(((NASH[Title] OR non alcoholic fatty liver disease[Title] OR nonalcoholic fatty liver disease[Title] OR Non-alcoholic Fatty Liver Disease[Title] OR NAFLD[Title] OR nonalcoholic steatohepatitis[Title] OR Non alcoholic steatohepatitis[Title] OR "non alcoholic fatty liver disease"[MeSH Terms]) NOT (intestinal Microbiome[Title] OR gut microbiota[Title] OR "Gastrointestinal Microbiome"[MeSH Terms])) AND (Drug Induced Liver Disease [Title/Abstract] OR "Chemical and Drug Induced Liver Injury"[MeSH Terms] OR "liver diseases/chemically induced"[MeSH Terms] OR liver diseases chemically induced[Title/Abstract] OR "peroxisome proliferator-activated receptors"[MeSH Terms] OR PPAR[Title/Abstract] OR peroxisome proliferator activated receptors[Title/Abstract]) NOT "animals"[MH:NOEXP]) AND ("2019/11/05"[Date - Publication] : "3000"[Date - Publication])'
-]
-email_from = "segas.lea@gmail.com"
+email_from, input_file_path = mailer.read_last_mail()
+pubmed_requests = mailer.read_pubmed_requests(file_path=input_file_path)
 
 # Launch a monitoring instance
 monitor = Monitoring(configuration=configuration)

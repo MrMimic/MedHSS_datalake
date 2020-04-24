@@ -118,7 +118,7 @@ class Publication():
         try:
             self.abstract = (re.sub('\n', '', data.abstract.text))
         except AttributeError:
-            pass
+            self.abstract = None
 
     def write_data(self, file_path: str) -> None:
         """
