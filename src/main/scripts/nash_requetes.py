@@ -40,4 +40,4 @@ for index, request in enumerate(pubmed_requests):
 # Add daily scanned PMIDs
 database = SQLite(configuration=configuration)
 # Insert daily scanned PMIDs
-database.insert_list_of_scanned_pmids(monitor.daily_scanned)
+database.insert_list_of_scanned_pmids(list(set(monitor.daily_scanned)))
