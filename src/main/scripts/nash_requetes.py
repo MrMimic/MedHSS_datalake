@@ -5,6 +5,8 @@ import configparser
 from monitoring.monitore_pubmed import Monitoring
 from publication.publication import Publication
 from emails.gmail import Gmail
+from databases.sqlite import SQLite
+
 
 # Read configuration
 configuration = configparser.ConfigParser()
@@ -28,8 +30,14 @@ for index, request in enumerate(pubmed_requests):
     # Write a local file
     file_path = monitor.launch_search(request=request, index=index + 1)
     # And send it back
-    mailer.send_mail(
-        corresponding=email_from,
-        file_name=file_path,
-        subject=f"Auto analysis #{index + 1}",
-        text="<3")
+    if os.path.isfile(file_path):
+        mailer.send_mail(
+            corresponding=email_from,
+            file_name=file_path,
+            subject=f"Auto analysis #{index + 1}",
+            text="<3")
+
+# Add daily scanned PMIDs
+database = SQLite(configuration=configuration)
+# Insert daily scanned PMIDs
+database.insert_list_of_scanned_pmids(monitor.daily_scanned)

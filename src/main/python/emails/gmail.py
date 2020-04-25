@@ -100,9 +100,11 @@ class Gmail(object):
             file_name = part.get_filename()
             if bool(file_name):
                 file_path = os.path.join('input', file_name)
-                if not os.path.isfile(file_path) :
-                    with open(file_path, 'wb') as handler:
-                        handler.write(part.get_payload(decode=True))
+                # Delete precedent input file
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+                with open(file_path, 'wb') as handler:
+                    handler.write(part.get_payload(decode=True))
                 print('Downloaded "{file}" from email titled "{subject}" with UID {uid}.'.format(file=file_name, subject=email_subject, uid=latest_email_id))
 
         return email_from, file_path

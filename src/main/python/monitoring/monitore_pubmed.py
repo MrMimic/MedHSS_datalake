@@ -65,7 +65,5 @@ class Monitoring():
                     file_path=os.path.join(self.output_path, file_name))
                 # Then, add PMID to already scanned IDs
                 self.daily_scanned.append(pmid)
-        # Insert daily scanned PMIDs
-        self.database.insert_list_of_scanned_pmids(self.daily_scanned)
         # And return written file's path
         return os.path.join(self.output_path, file_name)
