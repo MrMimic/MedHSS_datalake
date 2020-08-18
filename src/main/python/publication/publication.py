@@ -15,7 +15,7 @@ class Publication():
         Args:
             pmid (str): PMID of the publication.
             configuration (Dict[str, str]): Global configuration.
-        """        
+        """
         # Store configuration
         self.configuration = configuration
         # Get publication types

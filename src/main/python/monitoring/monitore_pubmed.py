@@ -46,7 +46,7 @@ class Monitoring():
         # Get today's date
         today = datetime.today().date()
         # And file name
-        file_str = request.replace('+', '_')[:50]
+        file_str = ''.join(filter(str.isalpha, request))[:50]
         # Combine them into a file name
         file_name = f"{index}_{today}_{file_str}.csv"
         # Call Pubmed API and index XML response

@@ -13,7 +13,7 @@ class Gmail(object):
 
     def __init__(self, email: str, password: str, server: str, port: int) -> None:
         """
-        Allow to reach a gmail 
+        Allow to reach a gmail
 
         Args:
             email (str): Email to connect.
@@ -37,7 +37,7 @@ class Gmail(object):
             text (str): The text body.
         """
         # Connect server
-        server = smtplib.SMTP(self.server, self.port)
+        server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(self.email, self.password)
         # Write mail
@@ -68,7 +68,7 @@ class Gmail(object):
 
         Returns:
             List[str, str]: Mail from and local path of the file.
-        """        
+        """
         # Connect server
         mail = imaplib.IMAP4_SSL(self.server)
         mail.login(self.email, self.password)

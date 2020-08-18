@@ -11,7 +11,6 @@ from databases.sqlite import SQLite
 # Read configuration
 configuration = configparser.ConfigParser()
 configuration.read(os.path.join("src", "main", "resources", "configuration.cfg"))
-
 # Configure mailer
 mailer = Gmail(email=configuration["account"]["mail"],
                password=configuration["account"]["pass"],
