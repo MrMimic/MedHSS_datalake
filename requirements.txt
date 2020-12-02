@@ -10,7 +10,7 @@ compizconfig-python==0.9.13.1
 configparser==3.7.4
 contextlib2==0.5.5
 crcmod==1.7
-cryptography==2.1.4
+cryptography==3.2
 cycler==0.10.0
 Cython==0.29.7
 decorator==4.4.0
